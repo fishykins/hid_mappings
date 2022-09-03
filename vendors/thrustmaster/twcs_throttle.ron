@@ -1,0 +1,73 @@
+(
+    name: "TWCS Throttle",
+    device_type: (
+        vendor_id: 1103,
+        product_id: 46727,
+    ),
+    map: (
+        buttons: {
+            Button(1): (buf: 17, query: Bit(16)),
+            Button(2): (buf: 17, query: Bit(32)),
+            Button(3): (buf: 17, query: Bit(64)),
+            Button(4): (buf: 17, query: Bit(128)),
+            Button(5): (buf: 18, query: Bit(1)),
+            Button(6): (buf: 48, query: Bit(2)),
+        },
+        button_groups: {
+            DualTrigger: (
+                mono: false,
+                buttons: {
+                    HalfDepress: (buf: 17, query: Bit(1)),
+                    Fire: (buf: 17, query: Bit(2)),
+                }
+            ),
+            DPad(1): (
+                mono: true,
+                buttons: {
+                    Up: (buf: 18, query: Bit(4)),
+                    Right: (buf: 18, query: Bit(8)),
+                    Down: (buf: 18, query: Bit(16)),
+                    Left: (buf: 18, query: Bit(32)),
+                }
+            ),
+            DPad(2): (
+                mono: true,
+                buttons: {
+                    Up: (buf: 18, query: Bit(64)),
+                    Right: (buf: 18, query: Bit(128)),
+                    Down: (buf: 19, query: Bit(1)),
+                    Left: (buf: 19, query: Bit(2)),
+                }
+            ),
+            HatSwitch(1): (
+                mono: true,
+                buttons: {
+                    Up: (buf: 17, query: Eq(0)),
+                    UpRight: (buf: 17, query: Eq(1)),
+                    Right: (buf: 17, query: Eq(2)),
+                    DownRight: (buf: 17, query: Eq(3)),
+                    Down: (buf: 17, query: Eq(4)),
+                    DownLeft: (buf: 17, query: Eq(5)),
+                    Left: (buf: 17, query: Eq(6)),
+                    UpLeft: (buf: 17, query: Eq(7)),
+                }
+            )
+
+        },
+        analog_groups: {
+            LeftStick: Dual(
+                (fine: 1, coarse: 2, octaves: 4), 
+                (fine: 3, coarse: 4, octaves: 4), 
+            ),
+            Slider(1): Single(
+                (fine: 14, coarse: 15, octaves: 4),
+            ),
+            Throttle(1): Single(
+                (fine: 16, coarse: 16, octaves: 256),
+            ),
+            RZ: Single(
+                (fine: 5, coarse: 6, octaves: 4),
+            )
+        }
+    )
+)
